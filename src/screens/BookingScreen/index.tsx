@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { BookingStep1 } from "../../containers";
-import { BookingStep2 } from "../../containers/BookingStep2";
+// import { BookingStep1 } from "../../containers";
+// import { BookingStep2 } from "../../containers/BookingStep2";
+import { BookingStep3 } from "../../containers/BookingStep3";
 
 const BookingScreenStyles = styled.div`
     position: relative;
@@ -29,7 +30,8 @@ export const BookingScreen = () => {
         <h5>Booking a service</h5>
       </div>
       {/* <BookingStep1 /> */}
-      <BookingStep2 />
+      {/* <BookingStep2 /> */}
+      <BookingStep3 />
 
     </BookingScreenStyles>
   );
