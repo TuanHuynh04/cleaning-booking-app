@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { BookingStep1 } from "../../containers";
+import { BookingStep2 } from "../../containers/BookingStep2";
 
 const BookingScreenStyles = styled.div`
     position: relative;
@@ -24,10 +25,12 @@ const BookingScreenStyles = styled.div`
 export const BookingScreen = () => {
   return (
     <BookingScreenStyles>
-        <div className="label_booking">
-            <h5>Booking a service</h5>
-        </div>
-      <BookingStep1 />
+      <div className="label_booking">
+        <h5>Booking a service</h5>
+      </div>
+      {/* <BookingStep1 /> */}
+      <BookingStep2 />
+
     </BookingScreenStyles>
   );
 };
