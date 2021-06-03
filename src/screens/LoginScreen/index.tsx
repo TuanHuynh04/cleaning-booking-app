@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import HomeCleanSVG from "../../assets/images/HomeClean.svg";
 
@@ -39,6 +40,7 @@ const LoginScreenStyles = styled.div`
 `;
 
 export const LoginScreen = () => {
+  const history = useHistory();
   return (
     <LoginScreenStyles>
       <div className="container-fluid">
@@ -58,7 +60,7 @@ export const LoginScreen = () => {
               <img src={HomeCleanSVG} alt="home-cleaner" />
             </div>
             <div className="google-sigin text-center w-100">
-              <button>Sign in with Google</button>
+              <button onClick={() => history.push("/booking")}>Sign in with Google</button>
             </div>
           </div>
         </div>
