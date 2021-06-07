@@ -14,11 +14,17 @@ const BookingStep3Styles = styled.div`
   border-radius: 40px 40px 0 0;
   min-width: 100%;
   min-height: 90%;
+  padding: 1rem 5%;
   .home_service label {
     color: black;
     font-size: 14px;
   }
 `;
+
+interface BookingStep3Props {
+  back: () => void;
+  next: () => void;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,7 +37,8 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export const BookingStep3 = () => {
+export const BookingStep3 = (props: BookingStep3Props) => {
+  const { back, next } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState("Controlled");
 
@@ -41,7 +48,7 @@ export const BookingStep3 = () => {
   return (
     <BookingStep3Styles>
       <div>
-        <label>Choose additional services:</label>
+        <h5 style={{ color: '#5c4db1', fontSize: '1rem', marginTop: '5px' }}>Choose additional services:</h5>
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={true} name="=window_cleaning" />}
@@ -74,27 +81,26 @@ export const BookingStep3 = () => {
         </FormGroup>
       </div>
       <div>
-        <label>Additional information:</label>
-        <h6>
+        <h5 style={{ color: '#5c4db1', fontSize: '1rem', marginTop: '5px' }}>Additional information:</h5>
+        <p style={{ fontSize: '12px' }}>
           If you want us to pay attention to some particular places in your
           home, please enter this information in the box
-        </h6>
-        <form className={classes.root} noValidate autoComplete="off">
-          <div>
-            <TextField
-              id="outlined-multiline-static"
-              label="Multiline"
-              multiline
-              rows={4}
-              defaultValue="Default Value"
-              variant="outlined"
-            />
-          </div>
-        </form>
+        </p>
+        <TextField
+          id="outlined-multiline-static"
+          label="Addtional Info"
+          multiline
+          className="w-100"
+          placeholder="Enter addtional information"
+          variant="outlined"
+        />
       </div>
-      <div className="row">
-        <div className="col-12 d-flex justify-content-center">
-          <Button style={{ padding: '0.5rem 3.5rem' }} variant="contained" color="primary">
+      <div className="row mt-3">
+        <div className="col-12 d-flex justify-content-between">
+          <Button onClick={() => back()} style={{ padding: '0.5rem 3.5rem' }} variant="contained" color="primary">
+            BACK
+          </Button>
+          <Button onClick={() => next()} style={{ padding: '0.5rem 3.5rem' }} variant="contained" color="primary">
             NEXT
           </Button>
         </div>

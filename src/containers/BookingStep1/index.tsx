@@ -21,11 +21,16 @@ const BookingStep1Styles = styled.div`
   }
 `;
 
-export const BookingStep1 = () => {
+interface BookingStep1Props {
+  next: () => void;
+}
+
+export const BookingStep1 = (props: BookingStep1Props) => {
   const [roomCleanCheckState, setRoomCleanCheckState] = useState(false);
   const [fullHouseCleanCheckState, setFullHouseCleanCheckState] =
     useState(false);
   const history = useHistory();
+  const { next } = props;
   return (
     <BookingStep1Styles>
       <div className="home_service">
@@ -64,7 +69,7 @@ export const BookingStep1 = () => {
           </div>
           <div className="row">
             <div className="col-12 d-flex justify-content-center">
-              <Button onClick={() => history.push("/booking/detail")} style={{ padding: '0.5rem 3.5rem' }} variant="contained" color="primary">NEXT</Button>
+              <Button disabled={roomCleanCheckState === false && fullHouseCleanCheckState === false} onClick={() => next()} style={{ padding: '0.5rem 3.5rem' }} variant="contained" color="primary">NEXT</Button>
             </div>
           </div>
         </div>
