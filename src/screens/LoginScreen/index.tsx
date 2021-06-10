@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 import HomeCleanSVG from "../../assets/images/HomeClean.svg";
+import { FirebaseAuthConsumer } from "@react-firebase/auth";
+import firebase from "firebase";
+import GoogleIcon from "../../assets/svg/google.svg";
 
 const LoginScreenStyles = styled.div`
   background-color: #5c4db1;
@@ -24,13 +27,12 @@ const LoginScreenStyles = styled.div`
 
   .google-sigin {
     position: absolute;
-    bottom: 3%;
+    bottom: 0;
     left: 0;
     button {
       border: none;
       outline: none;
-      padding: 10px 50px;
-      border-radius: 10px;
+      padding: 20px 20px;
     }
 
     button:hover {
@@ -41,6 +43,7 @@ const LoginScreenStyles = styled.div`
 
 export const LoginScreen = () => {
   const history = useHistory();
+  const [isLoginState, setIsLoginState] = useState(false);
   return (
     <LoginScreenStyles>
       <div className="container-fluid">
@@ -57,10 +60,47 @@ export const LoginScreen = () => {
               <span>Book Cleaners at the Comfort of your home</span>
             </div>
             <div>
-              <img src={HomeCleanSVG} alt="home-cleaner" />
+              <img src="" alt="" />
             </div>
             <div className="google-sigin text-center w-100">
-              <button onClick={() => history.push("/booking")}>Sign in with Google</button>
+              <FirebaseAuthConsumer>
+                {({ isSignedIn, user, providerId }) => {
+                  return !isSignedIn ? (
+                    <button
+                      className="d-flex flex-wrap flex-row text-center w-100 justify-content-center"
+                      onClick={() => {
+                        const googleAuthProvider =
+                          new firebase.auth.GoogleAuthProvider();
+                        firebase.auth().signInWithPopup(googleAuthProvider);
+                      }}
+                    >
+                      Sign in with Google{" "}
+                      <span>
+                        <img
+                          src={GoogleIcon}
+                          alt="google"
+                          width="20"
+                          height="20"
+                        />
+                      </span>
+                    </button>
+                  ) : (
+                    <div className="d-flex justify-content-center flex-row align-items-center mb-3">
+                      <img
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "50%",
+                          marginRight: "1rem",
+                        }}
+                        src={user.photoURL}
+                        alt=""
+                      />
+                      <span>{user.displayName}</span>
+                    </div>
+                  );
+                }}
+              </FirebaseAuthConsumer>
             </div>
           </div>
         </div>
