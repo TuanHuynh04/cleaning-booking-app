@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { BookingStep1 } from "../../containers";
+import { BookingStep1 } from "../../containers/BookingStep1";
 import { BookingStep2 } from "../../containers/BookingStep2";
 import { BookingStep3 } from "../../containers/BookingStep3";
 
