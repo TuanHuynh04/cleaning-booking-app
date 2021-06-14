@@ -16,9 +16,9 @@ const BookingScreenStyles = styled.div`
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    .label_booking h5{
+    .label_booking h2{
         font-weight: bold;
-        letter-spacing: 1px;
+        font-family: sans-serif;
     }
 
 `;
@@ -48,7 +48,7 @@ export const BookingScreen = () => {
   return (
     <BookingScreenStyles>
       <div className="label_booking">
-        <h5>Booking a service</h5>
+        <h2>Home Cleaning!</h2>
       </div>
       <div hidden={!step1State}>
         <BookingStep1 next={nextStep2} />

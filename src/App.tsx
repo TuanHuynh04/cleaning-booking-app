@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { createBrowserHistory } from "history";
 import { Router } from "react-router";
-import firebase from "firebase";
+import firebase from 'firebase';
 import { FirebaseAuthProvider } from "@react-firebase/auth";
 import { FirestoreProvider } from "@react-firebase/firestore";
 

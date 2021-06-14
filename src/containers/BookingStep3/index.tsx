@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Checkbox, FormControlLabel, FormGroup, Button } from "@material-ui/core";
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Button,
+} from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
@@ -29,12 +34,12 @@ interface BookingStep3Props {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      '& .MuiTextField-root': {
+      "& .MuiTextField-root": {
         margin: theme.spacing(1),
-        width: '25ch',
+        width: "25ch",
       },
     },
-  }),
+  })
 );
 
 export const BookingStep3 = (props: BookingStep3Props) => {
@@ -48,7 +53,9 @@ export const BookingStep3 = (props: BookingStep3Props) => {
   return (
     <BookingStep3Styles>
       <div>
-        <h5 style={{ color: '#5c4db1', fontSize: '1rem', marginTop: '5px' }}>Choose additional services:</h5>
+        <h5 style={{ color: "#5c4db1", fontSize: "1rem", marginTop: "5px" }}>
+          Choose additional services:
+        </h5>
         <FormGroup>
           <FormControlLabel
             control={<Checkbox checked={true} name="=window_cleaning" />}
@@ -81,8 +88,10 @@ export const BookingStep3 = (props: BookingStep3Props) => {
         </FormGroup>
       </div>
       <div>
-        <h5 style={{ color: '#5c4db1', fontSize: '1rem', marginTop: '5px' }}>Additional information:</h5>
-        <p style={{ fontSize: '12px' }}>
+        <h5 style={{ color: "#5c4db1", fontSize: "1rem", marginTop: "5px" }}>
+          Additional information:
+        </h5>
+        <p style={{ fontSize: "12px" }}>
           If you want us to pay attention to some particular places in your
           home, please enter this information in the box
         </p>
@@ -97,10 +106,20 @@ export const BookingStep3 = (props: BookingStep3Props) => {
       </div>
       <div className="row mt-3">
         <div className="col-12 d-flex justify-content-between">
-          <Button onClick={() => back()} style={{ padding: '0.5rem 3.5rem' }} variant="contained" color="primary">
+          <Button
+            onClick={() => back()}
+            style={{ padding: "0.5rem 3.5rem" }}
+            variant="contained"
+            color="primary"
+          >
             BACK
           </Button>
-          <Button onClick={() => next()} style={{ padding: '0.5rem 3.5rem' }} variant="contained" color="primary">
+          <Button
+            onClick={() => next()}
+            style={{ padding: "0.5rem 3.5rem" }}
+            variant="contained"
+            color="primary"
+          >
             NEXT
           </Button>
         </div>

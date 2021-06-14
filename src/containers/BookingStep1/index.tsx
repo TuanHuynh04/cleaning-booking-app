@@ -19,6 +19,12 @@ const BookingStep1Styles = styled.div`
     color: black;
     font-size: 14px;
   }
+  span{
+    font-family:sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #5c4db1;
+  }
 `;
 
 interface BookingStep1Props {
@@ -27,14 +33,19 @@ interface BookingStep1Props {
 
 export const BookingStep1 = (props: BookingStep1Props) => {
   const [roomCleanCheckState, setRoomCleanCheckState] = useState(false);
-  const [fullHouseCleanCheckState, setFullHouseCleanCheckState] =
-    useState(false);
+  const [fullHouseCleanCheckState, setFullHouseCleanCheckState] =useState(false);
   const history = useHistory();
   const { next } = props;
+
   return (
     <BookingStep1Styles>
       <div className="home_service">
-        <h5 className="text-center" style={{ color: '#5c4db1', fontSize: '1rem', marginTop: '5px' }}>Selected Cleaning</h5>
+        <h5
+          className="text-center"
+          style={{ color: "#5c4db1", fontSize: "1.1rem", marginTop: "5px",letterSpacing: "1px",fontFamily:"sans-serif",fontWeight: "bold"}}
+        >
+          Category
+        </h5>
         <div className="container">
           <div className="row">
             <div className="col-12 d-flex flex-column align-items-center">
@@ -46,11 +57,10 @@ export const BookingStep1 = (props: BookingStep1Props) => {
                   if (e.target.checked === true) {
                     setFullHouseCleanCheckState(false);
                   }
-                  setRoomCleanCheckState(e.target.checked)
+                  setRoomCleanCheckState(e.target.checked);
                 }}
-                inputProps={{ 'aria-label': 'primary checkbox' }}
+                inputProps={{ "aria-label": "primary checkbox" }}
               />
-
             </div>
             <div className="col-12 d-flex flex-column align-items-center mt-5">
               <img src={FullHouseCleanSVG} alt="room_clean" />
@@ -61,15 +71,25 @@ export const BookingStep1 = (props: BookingStep1Props) => {
                   if (e.target.checked === true) {
                     setRoomCleanCheckState(false);
                   }
-                  setFullHouseCleanCheckState(e.target.checked)
+                  setFullHouseCleanCheckState(e.target.checked);
                 }}
-                inputProps={{ 'aria-label': 'primary checkbox' }}
+                inputProps={{ "aria-label": "primary checkbox" }}
               />
             </div>
           </div>
           <div className="row">
             <div className="col-12 d-flex justify-content-center">
-              <Button disabled={roomCleanCheckState === false && fullHouseCleanCheckState === false} onClick={() => next()} style={{ padding: '0.5rem 3.5rem' }} variant="contained" color="primary">NEXT</Button>
+              <Button
+                disabled={
+                  roomCleanCheckState === false &&
+                  fullHouseCleanCheckState === false
+                }
+                onClick={() => next()}
+                style={{ padding: "0.5rem 3.5rem", border: "2px solid #5c4db1", background:"#fff", color:"#5c4db1", boxShadow: "0.5px 1px 5px 0"}}
+                variant="contained"
+              >
+                NEXT
+              </Button>
             </div>
           </div>
         </div>

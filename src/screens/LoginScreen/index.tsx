@@ -5,6 +5,7 @@ import HomeCleanSVG from "../../assets/images/HomeClean.svg";
 import { FirebaseAuthConsumer } from "@react-firebase/auth";
 import firebase from "firebase";
 import GoogleIcon from "../../assets/svg/google.svg";
+import HomeLogin from "../../assets/images/Home-login.svg";
 
 const LoginScreenStyles = styled.div`
   background-color: #5c4db1;
@@ -15,8 +16,15 @@ const LoginScreenStyles = styled.div`
   position: relative;
   h1,
   h2 {
-    font-weight: 700;
+    font-weight: bold;
     text-align: center;
+    font-family: sans-serif;
+  }
+
+  span{
+    font-size:16px;
+    font-family: sans-serif;
+    letter-spacing:1px;
   }
 
   img {
@@ -24,19 +32,32 @@ const LoginScreenStyles = styled.div`
     width: 100%;
     object-fit: contain;
   }
+  
+  .home-login{
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
 
-  .google-sigin {
+  .google-sign-in {
     position: absolute;
     bottom: 0;
     left: 0;
     button {
-      border: none;
+      border: 1px solid #b1a6f0;
+      background:#fff;
+      color:#b1a6f0;
       outline: none;
       padding: 20px 20px;
+      transition: 0.5s;
     }
 
     button:hover {
-      color: #5c4db1;
+      border: none;
+      background:#b1a6f0 ;
+      color: #fff;
     }
   }
 `;
@@ -57,12 +78,12 @@ export const LoginScreen = () => {
             </div>
 
             <div className="text-center mt-3">
-              <span>Book Cleaners at the Comfort of your home</span>
+              <span>Book Cleaners at the Comfort of your home!</span>
             </div>
             <div>
-              <img src="" alt="" />
+              <img src={HomeLogin} alt="" className="home-login" />
             </div>
-            <div className="google-sigin text-center w-100">
+            <div className="google-sign-in text-center w-100">
               <FirebaseAuthConsumer>
                 {({ isSignedIn, user, providerId }) => {
                   return !isSignedIn ? (
